@@ -1,4 +1,27 @@
 import React from "react";
+import styled from 'styled-components';
+import { Button } from "./components/button";
+
+const Container = styled.div`
+  padding: 12px 64px;
+`
+const Label = styled.label`
+  display: flex;
+  color: #757575;
+  font-size: 14px;
+  font-weight: bold;
+`
+const Input = styled.input`
+  border-radius: 3px;
+  padding: 4px 8px;
+  border: 1px solid black;
+`
+const ButtonContainer = styled.div`
+  margin-top: 24px;
+`
+const FormButton = styled(Button)`
+  width: 120px;
+`
 
 export class Form extends React.Component {
   constructor(props) {
@@ -12,21 +35,22 @@ export class Form extends React.Component {
   render() {
     const {text} = this.state;
     return (
-      <div>
+      <Container>
         <h4>新しい言語</h4>
+        <Label>言語</Label>
         <form onSubmit={(e) => this.submitFrom(e)}>
           <div>
-            <input
+            <Input
               type="text"
               value={text}
               onChange={(e) => this.setState({ text: e.target.value })}
             />
           </div>
-          <div>
-            <button>追加</button>
-          </div>
+          <ButtonContainer>
+            <FormButton>追加</FormButton>
+          </ButtonContainer>
         </form>
-      </div>
+      </Container>
     )
   }
 }
